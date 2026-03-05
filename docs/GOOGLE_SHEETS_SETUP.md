@@ -6,9 +6,9 @@
 2. Name it: `Iftar RSVP 2026`
 3. In Row 1, add these column headers:
 
-| A | B | C | D | E | F | G | H |
-|---|---|---|---|---|---|---|---|
-| Timestamp | Name | Attending | Biryani | Haleem | Fruit Chaat | Dessert | Sharbat |
+| A | B | C | D | E | F | G | H | I |
+|---|---|---|---|---|---|---|---|---|
+| Timestamp | Name | Contact | Attending | Notes | Drink | Starters | Main | Dessert |
 
 4. Copy the **Sheet ID** from the URL:
    ```
@@ -47,16 +47,22 @@ function doPost(e) {
       timeStyle: 'short'
     });
     
+    // Format starters array as comma-separated string
+    const startersText = Array.isArray(data.starters) 
+      ? data.starters.join(', ') 
+      : data.starters || '';
+    
     // Prepare row data
     const rowData = [
       timestamp,
       data.name || '',
+      data.contact || '',
       data.attending || '',
-      data.biryani ? 'Yes' : 'No',
-      data.haleem ? 'Yes' : 'No',
-      data.fruitChaat ? 'Yes' : 'No',
-      data.dessert ? 'Yes' : 'No',
-      data.sharbat ? 'Yes' : 'No'
+      data.notes || '',
+      data.drink || '',
+      startersText,
+      data.main || '',
+      data.dessert || ''
     ];
     
     // Append to sheet

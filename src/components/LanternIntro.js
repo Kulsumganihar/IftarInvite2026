@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
+const backgroundMusic = new Audio("/assets/sounds/emotional-arabian-oud.mp3");
+backgroundMusic.loop = true;   // keeps playing
+backgroundMusic.volume = 0.4;  // softer background sound
+
 function LanternIntro({ onEnter }) {
   const [isClicked, setIsClicked] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -20,50 +24,41 @@ function LanternIntro({ onEnter }) {
   const triggerReveal = () => {
     setIsClicked(true);
     playBellChime();
-    // Trigger curtain early - while lantern is still fading out
-    // This creates an overlap for smooth transition
-    setTimeout(onEnter, 500);
-  };
+    setTimeout(() => {
+      playBackgroundMusic();
+    }, 300);
+    setTimeout(() => {
+      onEnter();
+    }, 700);
+  };  
 
   const handleClick = () => {
     triggerReveal();
   };
 
+  const playBackgroundMusic = () => {
+  backgroundMusic.volume = 0;
+
+  backgroundMusic.play();
+
+  let vol = 0;
+
+  const fade = setInterval(() => {
+    if (vol < 0.4) {
+      vol += 0.02;
+      backgroundMusic.volume = vol;
+    } else {
+      clearInterval(fade);
+    }
+  }, 200);  
+  };
+
   const playBellChime = () => {
     try {
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      const now = audioContext.currentTime;
-      
-      // Create a bell chime sound effect
-      // First note - higher pitch
-      const osc1 = audioContext.createOscillator();
-      const gain1 = audioContext.createGain();
-      osc1.connect(gain1);
-      gain1.connect(audioContext.destination);
-      
-      osc1.frequency.setValueAtTime(800, now);
-      osc1.frequency.exponentialRampToValueAtTime(600, now + 0.6);
-      gain1.gain.setValueAtTime(0.3, now);
-      gain1.gain.exponentialRampToValueAtTime(0.01, now + 0.6);
-      osc1.type = 'sine';
-      osc1.start(now);
-      osc1.stop(now + 0.6);
-      
-      // Second note - lower pitch (delayed)
-      const osc2 = audioContext.createOscillator();
-      const gain2 = audioContext.createGain();
-      osc2.connect(gain2);
-      gain2.connect(audioContext.destination);
-      
-      osc2.frequency.setValueAtTime(500, now + 0.1);
-      osc2.frequency.exponentialRampToValueAtTime(350, now + 0.8);
-      gain2.gain.setValueAtTime(0.25, now + 0.1);
-      gain2.gain.exponentialRampToValueAtTime(0.01, now + 0.8);
-      osc2.type = 'sine';
-      osc2.start(now + 0.1);
-      osc2.stop(now + 0.8);
+      backgroundMusic.currentTime = 0;
+      backgroundMusic.play();
     } catch (e) {
-      console.log('Sound effect unavailable');
+      console.log("Audio playback failed");
     }
   };
 

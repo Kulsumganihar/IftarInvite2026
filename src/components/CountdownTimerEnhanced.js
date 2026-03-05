@@ -119,24 +119,60 @@ export default function CountdownTimerEnhanced() {
         }
 
         @media (max-width: 768px) {
+          .countdown-container {
+            gap: 8px;
+            padding: 20px 12px;
+          }
+
           .countdown-value {
-            font-size: 32px;
+            font-size: 28px;
+            min-width: 50px;
           }
 
           .countdown-item {
-            min-width: 70px;
+            min-width: 50px;
           }
 
           .countdown-unit {
-            font-size: 11px;
+            font-size: 10px;
           }
 
           .countdown-header {
-            font-size: 16px;
+            font-size: 14px;
           }
 
           .lantern-icon {
+            font-size: 18px;
+          }
+
+          .countdown-separator {
             font-size: 20px;
+            margin: 0 2px;
+          }
+        }
+
+        @media (max-width: 400px) {
+          .countdown-container {
+            gap: 4px;
+            padding: 16px 8px;
+          }
+
+          .countdown-value {
+            font-size: 24px;
+            min-width: 40px;
+          }
+
+          .countdown-item {
+            min-width: 40px;
+          }
+
+          .countdown-unit {
+            font-size: 9px;
+          }
+
+          .countdown-separator {
+            font-size: 16px;
+            margin: 0;
           }
         }
       `}</style>
