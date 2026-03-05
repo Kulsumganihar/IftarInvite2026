@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Iftar Invitation 2026</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Iftar 2026</h1>
+      <p class="lead">You are cordially invited to join us for a blessed evening of good food, family, and fellowship.</p>
+    </header>
+
+    <form id="inviteForm">
+      <section class="card">
+        <h2>Beverages</h2>
+        <p style="color: #9ca3af; margin: 0 0 12px; font-size: 14px;">Select one</p>
+        <div class="options-grid">
+          <label><input type="radio" name="drink" value="Mohabbat ka sharbat"> Mohabbat ka sharbat</label>
+          <label><input type="radio" name="drink" value="Spicy Mango Kulki"> Spicy Mango Kulki</label>
+          <label><input type="radio" name="drink" value="Lemonade"> Lemonade</label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Appetizers & Starters</h2>
+        <p style="color: #9ca3af; margin: 0 0 12px; font-size: 14px;">Select exactly 2 items (mix and match)</p>
+        
+        <div class="sub">Non-Vegetarian</div>
+        <div class="option-group">
+          <label><input type="checkbox" name="starter" value="Chicken Samosa"> Chicken Samosa</label>
+          <label><input type="checkbox" name="starter" value="Chicken Kebab"> Chicken Kebab</label>
+          <label><input type="checkbox" name="starter" value="Egg Chilli"> Egg Chilli</label>
+          <label><input type="checkbox" name="starter" value="Mint Chicken"> Mint Chicken</label>
+          <label><input type="checkbox" name="starter" value="Mutton Special"> Something with mutton</label>
+        </div>
+
+        <div class="sub">Vegetarian</div>
+        <div class="option-group">
+          <label><input type="checkbox" name="starter" value="Aalu samosa"> Aalu samosa</label>
+          <label><input type="checkbox" name="starter" value="Onion Samosa"> Onion Samosa</label>
+          <label><input type="checkbox" name="starter" value="Paneer Chilli"> Paneer Chilli</label>
+          <label><input type="checkbox" name="starter" value="Hara Bhara Kebab"> Hara Bhara Kebab</label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Main Courses</h2>
+        <p style="color: #9ca3af; margin: 0 0 12px; font-size: 14px;">Select one</p>
+        
+        <div class="sub">Non-Vegetarian</div>
+        <div class="option-group">
+          <label><input type="radio" name="main" value="Chicken Biryani"> Chicken Biryani</label>
+          <label><input type="radio" name="main" value="Ghee rice + Chicken curry"> Ghee rice + Chicken curry</label>
+        </div>
+
+        <div class="sub">Vegetarian</div>
+        <div class="option-group">
+          <label><input type="radio" name="main" value="Veg Pulao"> Veg Pulao</label>
+          <label><input type="radio" name="main" value="Ghee Rice + Veg curry"> Ghee Rice + Veg curry</label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Sweet Finales</h2>
+        <p style="color: #9ca3af; margin: 0 0 12px; font-size: 14px;">Select one</p>
+        <div class="options-grid">
+          <label><input type="radio" name="dessert" value="Sher khurma"> Sher khurma</label>
+          <label><input type="radio" name="dessert" value="Gulab jamun"> Gulab jamun</label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Attendance & Details</h2>
+        <p style="color: #9ca3af; margin: 0 0 12px; font-size: 14px; font-weight: 500;">Event: March 11, 2026</p>
+
+        <div style="margin-bottom: 16px;">
+          <p style="margin: 0 0 10px; font-weight: 700; color: var(--dark); font-size: 16px;">Will you grace us with your presence?</p>
+          <div class="options-grid">
+            <label><input type="radio" name="attending" value="Yes"> Yes, I'll be there!</label>
+            <label><input type="radio" name="attending" value="No"> No, I can't make it</label>
+            <label><input type="radio" name="attending" value="Maybe"> Maybe, I'll confirm later</label>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <label for="guestName">Your name (optional)</label>
+          <input type="text" id="guestName" placeholder="e.g. Ahmed" />
+        </div>
+
+        <div class="input-row">
+          <label for="contact">Contact (phone or email, optional)</label>
+          <input type="text" id="contact" placeholder="e.g. +1-555-0123 or email@domain.com" />
+        </div>
+
+        <div class="input-row">
+          <label for="guests">Number of guests (including you)</label>
+          <input type="number" id="guests" min="1" value="1" />
+        </div>
+
+        <div class="input-row">
+          <label for="notes">Special notes (dietary restrictions, allergies, etc.)</label>
+          <input type="text" id="notes" placeholder="e.g. vegetarian, gluten-free, nut allergy" />
+        </div>
+
+        <div class="actions">
+          <button type="submit" id="submitBtn">Submit RSVP & Choices</button>
+        </div>
+      </section>
+    </form>
+
+    <div id="result" class="card hidden">
+      <h3>Your RSVP Submitted</h3>
+      <pre id="summaryText"></pre>
+      <div class="result-actions">
+        <button id="copyBtn">📋 Copy as text</button>
+        <button id="resetBtn">✏️ Edit</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
